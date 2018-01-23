@@ -4,6 +4,11 @@ var totalScore = 0;
 
 //Let the computer pick a random number between 19-120 
 var targetScore = 0;
+///Variables of the images used for the game
+var images = ["assets/images/blue-crystal.png", "assets/images/green-crystal.png", "assets/images/diamond.png", "assets/images/white-crystal.png" ];
+
+///Starts The Game By Creating Images. And assigning values. 
+initialize(); 
 
 //initializes the game 
 function initialize(){
@@ -16,13 +21,11 @@ function initialize(){
     	//Sets attributes to all the images 
     	newCrystal.attr("data-crystalvalue", Math.floor(Math.random() * 12) + 1); 
     	newCrystal.attr("class", "crystal-image"); 
-    	newCrystal.attr("src", "http://cdn.playbuzz.com/cdn/35910209-2844-45c0-b099-f4d82878d54f/00261fda-4062-4096-81fd-8cf96b9034e8.jpg");
+    	newCrystal.attr("src", images[i]);
     	//Appends the new images to the page. 
     	$("#crystals").append(newCrystal);
     }
 }
-
-initialize(); 
 
 $(".crystal-image").on("click", function(){
     //totalScore he value for each data value. 
