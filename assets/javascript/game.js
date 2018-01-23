@@ -1,6 +1,7 @@
 var wins = 0; 
 var losses = 0; 
 var totalScore = 0; 
+var gameOver = false; 
 
 //Let the computer pick a random number between 19-120 
 var targetScore = 0;
@@ -17,21 +18,26 @@ function initialize(){
     $("#target-score").text(targetScore);
     //Sets the images with data-crystalvalues 
     for(var i = 0; i < 4; i++){
+        var newDiv = $("<div>")
     	var newCrystal = $("<img>");
+
+        ///Sets the class for the div 
+        newDiv.attr("class", "image-div")
     	//Sets attributes to all the images 
-    	newCrystal.attr("data-crystalvalue", Math.floor(Math.random() * 12) + 1); 
+    	newCrystal.attr("data-crystalvalue", Math.floor(Math.random() * 12) + 1);  
     	newCrystal.attr("class", "crystal-image"); 
     	newCrystal.attr("src", images[i]);
     	//Appends the new images to the page. 
-    	$("#crystals").append(newCrystal);
+        newDiv.append(newCrystal); 
+    	$("#crystals").append(newDiv);
     }
 }
 
 $(".crystal-image").on("click", function(){
+    if (gameOver){return;}
     //totalScore he value for each data value. 
     totalScore += parseInt($(this).attr("data-crystalvalue"));
     $("#total-score").text(totalScore);
-    console.log("The total Score is " + totalScore);
     if(totalScore >= targetScore){
     	checkScore(totalScore); 
     }
@@ -43,17 +49,24 @@ function checkScore(currentScore){
     if(currentScore == targetScore){
     	wins++; 
     	$("#wins").text(wins); 
+        gameOver = true; 
     }
     else {
      	losses++;
      	$("#losses").text(losses); 
+        gameOver =true; 
     }
-    resetGame(); 
+    //resetGame(); 
 }
+
+$("#reset-button").on("click", function(){
+    resetGame();
+}); 
 
 ///Resets the values of the game. 
 function resetGame(){
     totalScore = 0; 
+    $("#total-score").text(totalScore);
     //Let the computer pick a random number between 19-120 
     targetScore = Math.floor(Math.random() * 102) + 19; 
     $("#target-score").text(targetScore);
@@ -61,4 +74,5 @@ function resetGame(){
     	//Sets attributes to all the images 
     	$("<img>").attr("data-crystalvalue", Math.floor(Math.random() * 12) + 1); 
     }
+    gameOver = false; 
 }

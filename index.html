@@ -6,19 +6,42 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 </head>
 <body>
-	
-	<div class="ui grid">
-  		<div class="sixteen wide column"><h1>Crystal Game</h1></div>
-  		<div class="sixteen wide column"><h1>Target Score: <span id="target-score"></span></h1></div>
-  		<div class="eight wide column">
-	  		<div class="wins-losses">
-				<p>Wins: <span id="wins">0</span></p>
-				<p>losses: <span id="losses">0</span></p>
+	<div class="ui container">
+		<div class="ui grid">
+	  		<div class="sixteen wide column"><div class="ui center aligned segment"><h1>Crystal Game</h1></div></div>
+	  		<div class="sixteen wide column">
+	  			<div class="ui left aligned segment">
+	  				<h4>Instructions:<br><br> You are randomly given a target value to reach using these crystals. You must click on the crystals to determine their value. <br>If you click the right sequence of crystals to reach the exact target value, you win. If your total is greater than the target, you lose.</h4>
+	  			</div>
+	  		</div>
+	  		<div class="eight wide column">
+	  			<div class="ui center aligned segment">
+	  				<div class="target-score-div">
+		  				<h1>Target Score: <span id="target-score">0</span></h1>
+					</div>
+	  			</div>
+	  		</div>
+	  		<div class="eight wide column">
+	  			<div class="ui center aligned segment">
+			  		<div class="wins-losses">
+						<h3>Wins: <span id="wins">0</span></h3>
+						<h3>Losses: <span id="losses">0</span></h3>
+					</div>
+				</div>
 			</div>
+			<div class="sixteen wide column"><div class="ui center aligned segment"><div id="crystals"></div></div></div>
+	  		<div class="eight wide column">
+	  			<div class="ui center aligned segment">
+	  				<h1 class="score-seg">Your Total Score Is: <span id="total-score">0</span></h1>
+	  			</div> 
+			</div> 
+			<div class="eight wide column">
+	  			<div class="ui center aligned segment">
+	  				<img id="reset-button" src="assets/images/reset-button.png">
+	  			</div> 
+			</div> 
 		</div>
-		<div class="sixteen wide column"><div id="crystals"></div></div>
-  		<div class="sixteen wide column"><h2>Your Total Score is:<span id="total-score"></span></h2></div> 
-	</div> 
+	</div>
 	
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>

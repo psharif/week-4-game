@@ -1,4 +1,50 @@
+body{
+	background-image: url("../images/crystal-background.jpg"); 
+}
+
+h3{
+	font-size: 1.6em;
+}
+
+h4{
+	font-size: 1.3em;
+}
+
+.container {
+	margin-top: 150px;
+}
 .crystal-image {
+	width: 120px;
+	height: 120px;
+}
+
+.wins-losses {
+	width: 300px;
+}
+
+.image-div {
+	border: 10px solid #87CEFA;
+	width: 170px;
+	height: 170px;
+	padding: 20px;
+	float: left;
+	margin-left: 8%;
+}
+
+.segment{
+	overflow: auto;
+}
+
+.score-seg{
+	margin-left: 8%;
+	padding-bottom: 50px;
+}
+
+.target-score-div{
+	padding-bottom: 44px;
+}
+
+#reset-button {
 	width: 200px;
-	height: 200px;
+	height: 80px;
 }
