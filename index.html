@@ -2,14 +2,14 @@
 <html>
 <head>
 	<title>Crystal Game by Pedram Sharif</title>
-	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 </head>
 <body>
 	<h1>Crystal Game</h1>
 	<h1>Target Score: <span id="target-score"></span></h1>
 	<div class="wins-losses">
-		<p>Wins: <span></span></p>
-		<p>Left: <span></span></p>
+		<p>Wins: <span id="wins">0</span></p>
+		<p>losses: <span id="losses">0</span></p>
 	</div> 
 	<div id="crystals"></div>
 	<h2>Your Total Score is:<span id="total-score"></span></h2>
@@ -19,7 +19,7 @@
 		var wins = 0; 
 		var losses = 0; 
 		var totalScore = 0; 
-		var lockGame = false; 
+		//var lockGame = false; 
 
 		//Let the computer pick a random number between 19-120 
 		var targetScore = 0;
@@ -44,7 +44,7 @@
 		initialize(); 
 
 		$(".crystal-image").on("click", function(){
-			if(lockGame){return}; 
+			//if(lockGame){return}; 
 			//totalScore he value for each data value. 
 			totalScore += parseInt($(this).attr("data-crystalvalue"));
 			console.log("The total Score is " + totalScore);
@@ -58,24 +58,26 @@
 			if(currentScore == targetScore){
 				console.log("You have won \n" ); 
 				wins++; 
+				$("#wins").text(wins); 
 				console.log("Wins is : " + wins); 
 			}
 			else {
 				console.log("You have lost.\n" ); 
-			 	losses++; 		
-			 	console.log("Lost  is : " + losses); 	
+			 	losses++;
+			 	$("#losses").text(losses); 
+			 	//console.log("Lost  is : " + losses); 	
 			}
 
-			lockGame = true; 
+			//lockGame = true; 
 			resetGame(); 
 		}
 
 		function resetGame(){
-			console.log("The game was reset"); 
+		//	console.log("The game was reset"); 
 			wins = 0; 
 			losses = 0; 
 			totalScore = 0; 
-			lockGame = false; 
+			//lockGame = false; 
 			//Let the computer pick a random number between 19-120 
 			targetScore = Math.floor(Math.random() * 102) + 19; 
 			$("#target-score").text(targetScore);
