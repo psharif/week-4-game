@@ -8,14 +8,28 @@ var targetScore = 0;
 ///Variables of the images used for the game
 var images = ["assets/images/blue-crystal.png", "assets/images/green-crystal.png", "assets/images/diamond.png", "assets/images/white-crystal.png" ];
 
+///Create Array of Four Randomly Generated Numbers. 
+///The numbers will not be the same. 
+var crystalValues = []; 
+
 ///Starts The Game By Creating Images. And assigning values. 
 initialize(); 
 
+function createCrystalValues(){
+    while(crystalValues.length < 4) {
+    var random = Math.floor(Math.random() * 12) + 1; 
+    if(!crystalValues.includes(random)){
+        crystalValues.push(random);
+    }
+}
+}
 //initializes the game 
 function initialize(){
     //Let the computer pick a random number between 19-120 
     targetScore = Math.floor(Math.random() * 102) + 19; 
     $("#target-score").text(targetScore);
+    //Creates the array with CrystalValues used for data-crystalvalues.  
+    createCrystalValues(); 
     //Sets the images with data-crystalvalues 
     for(var i = 0; i < 4; i++){
         var newDiv = $("<div>")
@@ -24,7 +38,7 @@ function initialize(){
         ///Sets the class for the div 
         newDiv.attr("class", "image-div")
     	//Sets attributes to all the images 
-    	newCrystal.attr("data-crystalvalue", Math.floor(Math.random() * 12) + 1);  
+    	newCrystal.attr("data-crystalvalue", crystalValues[i]);  
     	newCrystal.attr("class", "crystal-image"); 
     	newCrystal.attr("src", images[i]);
     	//Appends the new images to the page. 
@@ -70,9 +84,10 @@ function resetGame(){
     //Let the computer pick a random number between 19-120 
     targetScore = Math.floor(Math.random() * 102) + 19; 
     $("#target-score").text(targetScore);
+    createCrystalValues(); 
     for(var i = 0; i < 4; i++){
     	//Sets attributes to all the images 
-    	$("<img>").attr("data-crystalvalue", Math.floor(Math.random() * 12) + 1); 
+    	$("<img>").attr("data-crystalvalue", crystalValues[i]); 
     }
     gameOver = false; 
 }
