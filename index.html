@@ -6,14 +6,20 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 </head>
 <body>
-	<h1>Crystal Game</h1>
-	<h1>Target Score: <span id="target-score"></span></h1>
-	<div class="wins-losses">
-		<p>Wins: <span id="wins">0</span></p>
-		<p>losses: <span id="losses">0</span></p>
+	
+	<div class="ui grid">
+  		<div class="sixteen wide column"><h1>Crystal Game</h1></div>
+  		<div class="sixteen wide column"><h1>Target Score: <span id="target-score"></span></h1></div>
+  		<div class="eight wide column">
+	  		<div class="wins-losses">
+				<p>Wins: <span id="wins">0</span></p>
+				<p>losses: <span id="losses">0</span></p>
+			</div>
+		</div>
+		<div class="sixteen wide column"><div id="crystals"></div></div>
+  		<div class="sixteen wide column"><h2>Your Total Score is:<span id="total-score"></span></h2></div> 
 	</div> 
-	<div id="crystals"></div>
-	<h2>Your Total Score is:<span id="total-score"></span></h2>
+	
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
 	<script type="text/javascript" src="assets/javascript/game.js"></script>
