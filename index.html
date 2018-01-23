@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crystal Game by Pedram Sharif</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+	<h1>Crystal Game</h1>
+	<h1>Target Score: <span id="target-score"></span></h1>
+	<div class="wins-losses">
+		<p>Wins: <span></span></p>
+		<p>Left: <span></span></p>
+	</div> 
+	<div id="crystals"></div>
+	<h2>Your Total Score is:<span id="total-score"></span></h2>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+
+		var wins = 0; 
+		var losses = 0; 
+		var totalScore = 0; 
+		var lockGame = false; 
+
+		//Let the computer pick a random number between 19-120 
+		var targetScore = 0;
+
+		//initializes the game 
+		function initialize(){
+			//Let the computer pick a random number between 19-120 
+			targetScore = Math.floor(Math.random() * 102) + 19; 
+			$("#target-score").text(targetScore);
+			//Sets the images with data-crystalvalues 
+			for(var i = 0; i < 4; i++){
+				var newCrystal = $("<img>");
+				//Sets attributes to all the images 
+				newCrystal.attr("data-crystalvalue", Math.floor(Math.random() * 12) + 1); 
+				newCrystal.attr("class", "crystal-image"); 
+				newCrystal.attr("src", "http://cdn.playbuzz.com/cdn/35910209-2844-45c0-b099-f4d82878d54f/00261fda-4062-4096-81fd-8cf96b9034e8.jpg");
+				//Appends the new images to the page. 
+				$("#crystals").append(newCrystal);
+			}
+		}
+
+		initialize(); 
+
+		$(".crystal-image").on("click", function(){
+			if(lockGame){return}; 
+			//totalScore he value for each data value. 
+			totalScore += parseInt($(this).attr("data-crystalvalue"));
+			console.log("The total Score is " + totalScore);
+			if(totalScore >= targetScore){
+				checkScore(totalScore); 
+			}
+
+		}); 
+
+		function checkScore(currentScore){
+			if(currentScore == targetScore){
+				console.log("You have won \n" ); 
+				wins++; 
+				console.log("Wins is : " + wins); 
+			}
+			else {
+				console.log("You have lost.\n" ); 
+			 	losses++; 		
+			 	console.log("Lost  is : " + losses); 	
+			}
+
+			lockGame = true; 
+			resetGame(); 
+		}
+
+		function resetGame(){
+			console.log("The game was reset"); 
+			wins = 0; 
+			losses = 0; 
+			totalScore = 0; 
+			lockGame = false; 
+			//Let the computer pick a random number between 19-120 
+			targetScore = Math.floor(Math.random() * 102) + 19; 
+			$("#target-score").text(targetScore);
+			for(var i = 0; i < 4; i++){
+				//Sets attributes to all the images 
+				$("<img>").attr("data-crystalvalue", Math.floor(Math.random() * 12) + 1); 
+			}
+			
+		}
+		
+	</script>
+</body>
+</html>
