@@ -44,7 +44,6 @@
 		initialize(); 
 
 		$(".crystal-image").on("click", function(){
-			//if(lockGame){return}; 
 			//totalScore he value for each data value. 
 			totalScore += parseInt($(this).attr("data-crystalvalue"));
 			console.log("The total Score is " + totalScore);
@@ -67,17 +66,12 @@
 			 	$("#losses").text(losses); 
 			 	//console.log("Lost  is : " + losses); 	
 			}
-
-			//lockGame = true; 
+ 
 			resetGame(); 
 		}
 
 		function resetGame(){
-		//	console.log("The game was reset"); 
-			wins = 0; 
-			losses = 0; 
 			totalScore = 0; 
-			//lockGame = false; 
 			//Let the computer pick a random number between 19-120 
 			targetScore = Math.floor(Math.random() * 102) + 19; 
 			$("#target-score").text(targetScore);
