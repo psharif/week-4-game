@@ -7,22 +7,22 @@ var gameOver = false;
 var targetScore = 0;
 ///Variables of the images used for the game
 var images = ["assets/images/blue-crystal.png", "assets/images/green-crystal.png", "assets/images/diamond.png", "assets/images/white-crystal.png" ];
-
 ///Create Array of Four Randomly Generated Numbers. 
 ///The numbers will not be the same. 
 var crystalValues = []; 
-
 ///Starts The Game By Creating Images. And assigning values. 
 initialize(); 
 
+///Creates An array of crystal values that are all unique. Will keep going to array has 4 values.
 function createCrystalValues(){
     while(crystalValues.length < 4) {
-    var random = Math.floor(Math.random() * 12) + 1; 
-    if(!crystalValues.includes(random)){
-        crystalValues.push(random);
+        var random = Math.floor(Math.random() * 12) + 1; 
+        if(!crystalValues.includes(random)){
+            crystalValues.push(random);
+        }
     }
 }
-}
+
 //initializes the game 
 function initialize(){
     //Let the computer pick a random number between 19-120 
@@ -47,6 +47,7 @@ function initialize(){
     }
 }
 
+///Function that performs when a user clicks a crystal. 
 $(".crystal-image").on("click", function(){
     if (gameOver){return;}
     //totalScore he value for each data value. 
@@ -70,9 +71,9 @@ function checkScore(currentScore){
      	$("#losses").text(losses); 
         gameOver =true; 
     }
-    //resetGame(); 
 }
 
+///Function that performs when when user presses reset game. 
 $("#reset-button").on("click", function(){
     resetGame();
 }); 
